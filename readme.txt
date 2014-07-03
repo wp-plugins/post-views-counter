@@ -58,7 +58,5 @@ No questions yet.
 Initial release
 
 == Upgrade Notice ==
-
-
 = 1.0.1 =
 * Fix: Pluggable functions initialized too lately

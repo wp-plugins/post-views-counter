@@ -312,6 +312,5 @@ function Post_Views_Counter()
   	return $instance;
 }
 
-
 Post_Views_Counter();
 ?>
