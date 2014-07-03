@@ -80,7 +80,7 @@ class Post_Views_Counter
 			'link_to_post' => true,
 			'icon_class' => 'dashicons-visibility'
 		),
-		'version' => '1.0.0'
+		'version' => '1.0.1'
 	);
 
 
@@ -111,7 +111,7 @@ class Post_Views_Counter
 		// actions
 		add_action('plugins_loaded', array(&$this, 'load_textdomain'));
 		add_action('admin_enqueue_scripts', array(&$this, 'admin_scripts_styles'));
-		add_action('wp', array(&$this, 'load_pluggable_functions'), 10);
+		add_action('wp_loaded', array(&$this, 'load_pluggable_functions'), 10);
 
 		// filters
 		add_filter('plugin_action_links', array(&$this, 'plugin_settings_link'), 10, 2);

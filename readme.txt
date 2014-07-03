@@ -4,7 +4,7 @@ Donate link: http://www.dfactory.eu/
 Tags: counter, hits, postviews, post views, views, count
 Requires at least: 3.8.0
 Tested up to: 3.9.1
-Stable tag: 1.0.0
+Stable tag: 1.0.1
 License: MIT License
 License URI: http://opensource.org/licenses/MIT
 
@@ -51,11 +51,14 @@ No questions yet.
 
 == Changelog ==
 
+= 1.0.1 =
+* Fix: Pluggable functions initialized too lately
+
 = 1.0.0 =
 Initial release
 
 == Upgrade Notice ==
 
 
-= 1.0.0 =
-Initial release
+= 1.0.1 =
+* Fix: Pluggable functions initialized too lately
