@@ -12,7 +12,8 @@ class Post_Views_Counter_Frontend
 		add_action('wp_enqueue_scripts', array(&$this, 'frontend_scripts_styles'));
 
 		// filters
-		add_filter('the_content', array(&$this, 'add_post_counts'));
+		add_filter('the_content', array(&$this, 'add_post_views_count'));
+		add_filter('the_excerpt', array(&$this, 'remove_post_views_count'));
 	}
 
 
@@ -43,7 +44,7 @@ class Post_Views_Counter_Frontend
 	/**
 	 * 
 	*/
-	public function add_post_counts($content)
+	public function add_post_views_count($content)
 	{
 		if(is_singular() && in_array(get_post_type(), Post_Views_Counter()->get_attribute('options', 'display', 'post_types_display'), true))
 		{
@@ -80,7 +81,18 @@ class Post_Views_Counter_Frontend
 
 		return $content;
 	}
-
+	
+	
+	/**
+	 * Remove post views shortcode from excerpt
+	*/
+	public function remove_post_views_count($excerpt)
+	{
+		remove_shortcode('post-views');
+		$excerpt = preg_replace ('/\[post-views[^\]]*\]/', '', $excerpt);
+		return $excerpt;
+	}
+	
 
 	/**
 	 * 

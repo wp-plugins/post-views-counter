@@ -4,7 +4,7 @@ Donate link: http://www.dfactory.eu/
 Tags: counter, hits, postviews, post views, views, count
 Requires at least: 3.8.0
 Tested up to: 3.9.1
-Stable tag: 1.0.2
+Stable tag: 1.0.3
 License: MIT License
 License URI: http://opensource.org/licenses/MIT
 
@@ -32,6 +32,7 @@ For more information, check out plugin page at [dFactory](http://www.dfactory.eu
 
 = Translations: =
 * Polish - by Bartosz Arendt
+* Russian - by moonkir
 
 
 == Installation ==
@@ -51,6 +52,10 @@ No questions yet.
 
 == Changelog ==
 
+= 1.0.3 =
+* New: Russian translation, thanks to moonkir
+* Fix: Remove [post-views] shortcode from post excerpts if excerpt is empty
+
 = 1.0.2 =
 * Fix: Pluggable functions initialized too lately
 
@@ -58,5 +63,7 @@ No questions yet.
 Initial release
 
 == Upgrade Notice ==
-= 1.0.2 =
-* Fix: Pluggable functions initialized too lately
+
+= 1.0.3 =
+* New: Russian translation, thanks to moonkir
+* Fix: Remove [post-views] shortcode from post excerpts if excerpt is empty
