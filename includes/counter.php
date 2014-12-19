@@ -101,7 +101,7 @@ class Post_Views_Counter_Counter
 			$excluded_ips = Post_Views_Counter()->get_attribute('options', 'general', 'exclude_ips');
 
 			// whether to count this ip
-			if(!empty($excluded_ips) && filter_var($_SERVER['REMOTE_ADDR'], FILTER_VALIDATE_IP, FILTER_FLAG_IPV4) && in_array($_SERVER['REMOTE_ADDR'], $excluded_ips, true))
+			if(!empty($excluded_ips) && filter_var(preg_replace('/[^0-9a-fA-F:., ]/', '', $_SERVER['REMOTE_ADDR']), FILTER_VALIDATE_IP) && in_array($_SERVER['REMOTE_ADDR'], $excluded_ips, true))
 				exit;
 
 			// gets groups to check them faster
@@ -173,7 +173,7 @@ class Post_Views_Counter_Counter
 			$ips = Post_Views_Counter()->get_attribute('options', 'general', 'exclude_ips');
 
 			// whether to count this ip
-			if(!empty($ips) && filter_var($_SERVER['REMOTE_ADDR'], FILTER_VALIDATE_IP, FILTER_FLAG_IPV4) && in_array($_SERVER['REMOTE_ADDR'], $ips, true))
+			if(!empty($ips) && filter_var(preg_replace('/[^0-9a-fA-F:., ]/', '', $_SERVER['REMOTE_ADDR']), FILTER_VALIDATE_IP) && in_array($_SERVER['REMOTE_ADDR'], $ips, true))
 				return;
 
 			// gets groups to check them faster
