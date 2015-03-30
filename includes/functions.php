@@ -57,7 +57,7 @@ if(!function_exists('pvc_post_views'))
 			'<div class="post-views post-'.$post_id.' entry-meta">
 				'.($options['display_style']['icon'] && $icon_class !== '' ? $icon : '').'
 				'.($options['display_style']['text'] ? '<span class="post-views-label">'.$label.' </span>' : '').'
-				<span class="post-views-count">'.$views.'</span>
+				<span class="post-views-count">'.number_format_i18n($views).'</span>
 			</div>',
 			$post_id,
 			$views,
@@ -152,7 +152,7 @@ if(!function_exists('pvc_most_viewed_posts'))
 				}
 
 				$html .= '
-					<a class="post-title" href="'.get_permalink($post->ID).'">'.get_the_title($post->ID).'</a>'.($args['show_post_views'] ? ' <span class="count">('.pvc_get_post_views($post->ID).')</span>' : '');
+					<a class="post-title" href="'.get_permalink($post->ID).'">'.get_the_title($post->ID).'</a>'.($args['show_post_views'] ? ' <span class="count">('.number_format_i18n(pvc_get_post_views($post->ID)).')</span>' : '');
 
 				$excerpt = '';
 

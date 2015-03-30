@@ -273,7 +273,7 @@ class Post_Views_Counter_Counter
 	{
 		$expiration = $this->get_timestamp(Post_Views_Counter()->get_attribute('options', 'general', 'time_between_counts', 'type'), Post_Views_Counter()->get_attribute('options', 'general', 'time_between_counts', 'number'));
 
-		// is it new cookie?
+		// is it a new cookie?
 		if(empty($cookie))
 		{
 			// sets cookie
@@ -384,6 +384,8 @@ class Post_Views_Counter_Counter
 				)
 			);
 		}
+		
+		do_action('pvc_after_count_visit', $id);
 	}
 
 

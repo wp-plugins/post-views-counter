@@ -3,8 +3,8 @@ Contributors: dfactory
 Donate link: http://www.dfactory.eu/
 Tags: counter, hits, postviews, post views, views, count
 Requires at least: 3.8.0
-Tested up to: 4.1
-Stable tag: 1.0.4
+Tested up to: 4.1.1
+Stable tag: 1.0.5
 License: MIT License
 License URI: http://opensource.org/licenses/MIT
 
@@ -52,6 +52,10 @@ No questions yet.
 
 == Changelog ==
 
+= 1.0.5 =
+* Tweak: Added number_format_i18n for displayed views count
+* Tweak: Additional action hook for developers
+
 = 1.0.4 =
 * Fix: Possible issue with remove_post_views_count function
 
@@ -67,5 +71,6 @@ Initial release
 
 == Upgrade Notice ==
 
-= 1.0.4 =
-* Fix: Possible issue with remove_post_views_count function
+= 1.0.5 =
+* Tweak: Added number_format_i18n for displayed views count
+* Tweak: Additional action hook for developers
