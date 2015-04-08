@@ -2,7 +2,7 @@
 /*
 Plugin Name: Post Views Counter
 Description: Forget WP-PostViews. Display how many times a post, page or custom post type had been viewed in a simple, fast and reliable way.
-Version: 1.0.6
+Version: 1.0.7
 Author: dFactory
 Author URI: http://www.dfactory.eu/
 Plugin URI: http://www.dfactory.eu/plugins/post-views-counter/
@@ -41,7 +41,7 @@ include_once(POST_VIEWS_COUNTER_PATH.'includes/widgets.php');
  * Post Views Counter class
  *
  * @class Post_Views_Counter
- * @version	1.0.6
+ * @version	1.0.7
  */
 class Post_Views_Counter {
 	private static $_instance;
@@ -88,7 +88,7 @@ class Post_Views_Counter {
 			'link_to_post' => true,
 			'icon_class' => 'dashicons-visibility'
 		),
-		'version' => '1.0.6'
+		'version' => '1.0.7'
 	);
 
 
@@ -252,45 +252,65 @@ class Post_Views_Counter {
 	 * Enqueue admin scripts and styles
 	*/
 	public function admin_scripts_styles($page)	{
-		// load on PVC settings page only
+		
+		wp_register_style(
+			'pvc-admin',
+			POST_VIEWS_COUNTER_URL.'/css/admin.css'
+		);
+
+		wp_register_style(
+			'pvc-chosen',
+			POST_VIEWS_COUNTER_URL.'/assets/chosen/chosen.min.css'
+		);
+		
+		wp_register_script(
+			'pvc-admin-chosen',
+			POST_VIEWS_COUNTER_URL.'/assets/chosen/chosen.jquery.min.js',
+			array('jquery'),
+			$this->defaults['version']
+		);
+
+		wp_register_script(
+			'pvc-admin-settings',
+			POST_VIEWS_COUNTER_URL.'/js/admin-settings.js',
+			array('jquery', 'pvc-admin-chosen'),
+			$this->defaults['version']
+		);
+		
+		wp_register_script(
+			'pvc-admin-post',
+			POST_VIEWS_COUNTER_URL.'/js/admin-post.js',
+			array('jquery'),
+			$this->defaults['version']
+		);
+		
+		// load on PVC settings page
 		if ($page === 'settings_page_post-views-counter') {
-			wp_register_script(
-				'post-views-counter-admin-chosen',
-				POST_VIEWS_COUNTER_URL.'/assets/chosen/chosen.jquery.min.js',
-				array('jquery'),
-				$this->defaults['version']
-			);
-
-			wp_register_script(
-				'post-views-counter-admin',
-				POST_VIEWS_COUNTER_URL.'/js/admin.js',
-				array('jquery', 'post-views-counter-admin-chosen'),
-				$this->defaults['version']
-			);
-
-			wp_enqueue_script('post-views-counter-admin-chosen');
-			wp_enqueue_script('post-views-counter-admin');
+			
+			wp_enqueue_script('pvc-admin-chosen');
+			wp_enqueue_script('pvc-admin-settings');
 
 			wp_localize_script(
-				'post-views-counter-admin',
+				'pvc-admin-settings',
 				'pvcArgsSettings',
 				array(
 					'resetToDefaults' => __('Are you sure you want to reset these settings to defaults?', 'post-views-counter')
 				)
 			);
 
-			wp_register_style(
-				'post-views-counter-admin',
-				POST_VIEWS_COUNTER_URL.'/css/admin.css'
-			);
-
-			wp_register_style(
-				'post-views-counter-chosen',
-				POST_VIEWS_COUNTER_URL.'/assets/chosen/chosen.min.css'
-			);
-
-			wp_enqueue_style('post-views-counter-chosen');
-			wp_enqueue_style('post-views-counter-admin');
+			wp_enqueue_style('pvc-chosen');
+			wp_enqueue_style('pvc-admin');
+		
+		// load on single post page
+		} elseif ($page = 'post.php') {
+			
+			$post_types = Post_Views_Counter()->get_attribute('options', 'general', 'post_types_count');
+			
+			if (!in_array(get_post_type(), (array)$post_types))
+				return;
+			
+			wp_enqueue_style('pvc-admin');
+			wp_enqueue_script('pvc-admin-post');
 		}
 	}
 
