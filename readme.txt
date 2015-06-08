@@ -4,7 +4,7 @@ Donate link: http://www.dfactory.eu/
 Tags: counter, hits, postviews, post views, views, count
 Requires at least: 3.8.0
 Tested up to: 4.2.2
-Stable tag: 1.0.10
+Stable tag: 1.0.11
 License: MIT License
 License URI: http://opensource.org/licenses/MIT
 
@@ -37,6 +37,7 @@ For more information, check out plugin page at [dFactory](http://www.dfactory.eu
 = Translations: =
 
 * Croation - by [Tomas Trkulja](http://zytzagoo.net/blog/)
+* French - by[Theophil Bethel](http://reseau-chretien-gironde.fr/)
 * Hebrew - by [Ahrale Shrem](http://atar4u.com/)
 * Polish - by Bartosz Arendt
 * Russian - by moonkir
@@ -63,6 +64,9 @@ No questions yet.
 2. screenshot-2.png
 
 == Changelog ==
+
+= 1.0.11 =
+* New: French translation, thanks to [Theophil Bethel](http://reseau-chretien-gironde.fr/)
 
 = 1.0.10 =
 * New: Option to limit post views editing to admins only 
@@ -100,5 +104,5 @@ Initial release
 
 == Upgrade Notice ==
 
-= 1.0.10 =
-* New: Option to limit post views editing to admins only 
+= 1.0.11 =
+* New: French translation, thanks to [Theophil Bethel](http://reseau-chretien-gironde.fr/)
